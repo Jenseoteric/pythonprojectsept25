@@ -14,6 +14,16 @@ symbol_count = { #dict invocation
     "D": 8
 }
 
+symbol_value = { #dict invocation
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 2
+}
+
+def check_winnings(columns, lines, bet, values):
+    for line in range(lines):
+
 def get_slot_machine_spin(rows, cols, symbols):
     all_symbols = [] # list def
     for symbol, symbol_count in symbols.items():
@@ -33,6 +43,16 @@ def get_slot_machine_spin(rows, cols, symbols):
 
     return columns #  ! ! ! ! ! revisit this logic tomorrow, study it a bit more ! !! ! 
 
+
+def print_slot_machine(columns):
+    for row in range(len(columns[0])):
+        for i, column in enumerate(columns):
+            if i != len(columns) - 1: #this is to ensure the "|" doesnt repeat
+                print(column[row], end=" | ")
+            else:
+                print(column[row], end="")
+
+        print()
 
 def deposit():
     while True:
@@ -91,6 +111,10 @@ def main():
             break
 
     print(f"You are betting ${bet} on ${lines} lines. Total bet is equal to: ${total_bet}")
-    print(balance, lines)
+   # print(balance, lines)
+
+    slots = get_slot_machine_spin(ROWS, COLS, symbol_count)
+    print_slot_machine(slots)
+
 
 main()
